@@ -22,7 +22,8 @@
 
 ### <a name="munge"></a>`munge`
 
-Manage MUNGE
+The key to the base64 encoded munge.key in vault
+Directory where the secret is located in vault
 
 #### Examples
 
@@ -63,6 +64,8 @@ The following parameters are available in the `munge` class:
 * [`munge_user_shell`](#munge_user_shell)
 * [`munge_user_home`](#munge_user_home)
 * [`package_install_options`](#package_install_options)
+* [`vaultbase64mungekey`](#vaultbase64mungekey)
+* [`vaultsecretdir`](#vaultsecretdir)
 
 ##### <a name="manage_repo"></a>`manage_repo`
 
@@ -262,6 +265,22 @@ Default value: `'/var/run/munge'`
 Data type: `Optional[Array[String]]`
 
 An array of additional options to pass when installing a package. Typical usage is enabling certain repositories like EPEL.
+
+Default value: ``undef``
+
+##### <a name="vaultbase64mungekey"></a>`vaultbase64mungekey`
+
+Data type: `Optional[String]`
+
+
+
+Default value: ``undef``
+
+##### <a name="vaultsecretdir"></a>`vaultsecretdir`
+
+Data type: `Optional[String]`
+
+
 
 Default value: ``undef``
 
