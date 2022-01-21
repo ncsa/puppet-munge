@@ -1,19 +1,15 @@
 # @summary Manage munge config
 # @api private
 class munge::config {
-  if (lookup(profile_secrets::enable))
+  if ($::munge::base64mungekey)
   {
-    $vault_uri = profile_secrets::lookup_uri($::munge::vaultsecretdir)
-    $vault_auth = lookup(profile_secrets::vault_authmethod)
-    $vault_kv_version = lookup(profile_secrets::vault_kv_version)
-
     file { '/etc/munge/munge.key':
       ensure  => 'file',
       path    => $::munge::munge_key_path,
       owner   => $::munge::user,
       group   => $::munge::group,
       mode    => '0400',
-      content => base64('decode', vault_key($vault_uri,$vault_auth,$::munge::vaultbase64mungekey,$vault_kv_version))
+      content => base64('decode', $::munge::base64mungekey)
     }
   }
   else

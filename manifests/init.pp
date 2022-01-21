@@ -56,11 +56,9 @@
 #   Home directory of munge user
 # @param package_install_options
 #   An array of additional options to pass when installing a package. Typical usage is enabling certain repositories like EPEL.
-# @param vaultbase64mungekey
-# The key to the base64 encoded munge.key in vault
-# @param vaultsecretdir
-# Directory where the secret is located in vault
-#
+# @param base64mungekey
+# The key to a base64 encoded munge.key
+
 class munge (
   Boolean $manage_repo                  = true,
   String $package_ensure                = 'present',
@@ -77,8 +75,7 @@ class munge (
   Optional[Stdlib::Absolutepath] $lib_dir = undef,
   Optional[Stdlib::Absolutepath] $conf_dir = undef,
   Optional[Stdlib::Absolutepath] $run_dir = undef,
-  Optional[String] $vaultbase64mungekey = undef,    # The key to the base64 encoded munge in vault
-  Optional[String] $vaultsecretdir    = undef,    # Directory where the secret is located in vault
+  Optional[String] $base64mungekey      = undef,    # The key to the base64 encoded munge key 
   Optional[String] $munge_key_source    = undef,
   Optional[String] $munge_key_content   = undef,
   Boolean $manage_user                  = true,
